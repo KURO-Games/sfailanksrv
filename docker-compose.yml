@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    container_name: laravel_db_sample
+    build: ./db/
+    image: laravel_db_sample
+    environment:
+      MYSQL_ROOT_PASSWORD: Password@1234
+      MYSQL_DATABASE: laravel_db
+    ports:
+      - 3306:3306
+  app:
+    container_name: laravel_app_sample
+    build: ./app/
+    image: laravel_app_sample
+    ports:
+      - 80:8000
+    links:
+      - db
+    volumes:
+      - ../laravel:/var/www/html/laravel
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
