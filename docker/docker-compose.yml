@@ -1,7 +1,7 @@
 version: '3'
 services:
   db:
-    container_name: laravel_db_sample
+    container_name: laravel_db
     build: ./db/
     image: laravel_db_sample
     environment:
@@ -10,7 +10,7 @@ services:
     ports:
       - 3306:3306
   app:
-    container_name: laravel_app_sample
+    container_name: laravel_app
     build: ./app/
     image: laravel_app_sample
     ports:
