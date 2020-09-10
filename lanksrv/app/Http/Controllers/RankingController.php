@@ -13,7 +13,18 @@ class RankingController extends Controller
     {
         $this->rankingService = $rankingService;
     }
+    public function getAll()
+    {
+        // ゲームIDに対応するランキング情報を取得
+        $rankings = Ranking::table('ranking')->get();
  
+        // Unity側のJsonUtilityでrootが配列だと受け取れないので1クッション挟む
+        $responseJson = [
+            'rankings' => $rankings
+        ];
+ 
+        return response()->json($responseJson);
+    } 
     public function get(Request $request)
     {
         // ゲームIDに対応するランキング情報を取得
