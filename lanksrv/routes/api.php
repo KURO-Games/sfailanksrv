@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'api'], function () {
     Route::get('/get', 'RankingController@get');
     Route::get('/check_rankin', 'RankingController@checkRankin');
+    Route::get('/ver','SvController@versions');
     Route::post('/regist', 'RankingController@regist');
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {
